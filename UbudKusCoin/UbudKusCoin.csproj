@@ -5,5 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="StreamJsonRpc" Version="2.1.74" />
+    <PackageReference Include="AustinHarris.JsonRpc" Version="1.1.70" />
   </ItemGroup>
 </Project>

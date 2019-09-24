@@ -60,6 +60,9 @@ namespace Main
             //Print all blocks
             bc.PrintBlocks();
 
+            var height = bc.GetHeight();
+            Console.WriteLine("Blockchain Height: {0}", height);           
+
             //check balance for each account account
             var balance = bc.GetBalance("Genesis Account");
             Console.WriteLine("Genesis Account balance: {0}", balance);
@@ -74,7 +77,13 @@ namespace Main
             balance = bc.GetBalance("Madona");
             Console.WriteLine("Madona balance: {0}", balance);
 
-            Console.ReadKey();
+
+
+
+            HTTPServer test = new HTTPServer();
+            test.Start();
+            while (true) ;
+
         }
 
 

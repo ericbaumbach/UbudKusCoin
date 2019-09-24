@@ -17,22 +17,19 @@ namespace Models
         }
 
 
-        private void Initialize()
-        {
-            Blocks = new List<Block>
+        private void Initialize() => this.Blocks = new List<Block>
             {
                 CreateGenesisBlock()
             };
-        }
 
         public Block GetLastBlock()
         {
-            return Blocks[Blocks.Count - 1];
+            return this.Blocks[this.Blocks.Count - 1];
         }
 
         public int GetHeight()
         {
-            var lastBlock  = Blocks[Blocks.Count - 1];
+            var lastBlock = this.Blocks[this.Blocks.Count - 1];
             return lastBlock.Height;
         }
 
@@ -62,19 +59,59 @@ namespace Models
             var prevHash = lastBlock.Hash;
             var timestamp = DateTime.Now.Ticks;
             var block = new Block(nextHeight, prevHash, transactions, "Admin");
-            Blocks.Add(block);
+            this.Blocks.Add(block);
 
 
         }
 
-       
+        public bool IsBlocksValid(List<Block> blocks)
+        {
+            if (blocks[0].Height != 1 && blocks[0].PrevHash.Equals(String.Empty.ConvertToBytes()))
+            {
+                return false;
+            }
+
+            for (int i = 0; i < blocks.Count; i++)
+            {
+                Block block = blocks[i];
+                Block prevBlock = blocks[i - 1];
+
+                if (block.PrevHash != prevBlock.Hash)
+                {
+                    return false;
+                }
+
+                if (block.Hash != block.GenerateHash())
+                {
+                    return false;
+                }
+
+
+            }
+            return true;
+        }
+
+        public void ReplaceBlocks(List<Block> receivedBlocks)
+        {
+            if (receivedBlocks.Count <= this.Blocks.Count)
+            {
+                return;
+            }
+            else if (!this.IsBlocksValid(receivedBlocks))
+            {
+                return;
+            }
+
+            this.Blocks = receivedBlocks;
+        }
+
         public double GetBalance(string name) {
 
             double balance = 0;
             double spending = 0;
             double income = 0;
 
-            foreach (Block block in Blocks)
+            foreach (Block block in this.Blocks)
             {
                 var transactions = block.Transactions;
               
@@ -103,7 +140,7 @@ namespace Models
 
             var sbf = new StringBuilder();
 
-            foreach (Block block in Blocks)
+            foreach (Block block in this.Blocks)
             {
                 Console.WriteLine("Height:      {0}", block.Height);
                 Console.WriteLine("Timestamp:   {0}", block.TimeStamp.ConvertToDateTime());
