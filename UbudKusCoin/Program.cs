@@ -47,42 +47,42 @@ namespace Main
             };
 
             var transactions = lsTrx.ToArray();
-            bc.AddBlock(transactions);
+            // bc.AddBlock(transactions);
 
-            lsTrx = new List<Transaction>
-            {
-                trx3         
-            };
+            // lsTrx = new List<Transaction>
+            // {
+            //     trx3         
+            // };
 
-            transactions = lsTrx.ToArray();
-            bc.AddBlock(transactions);
+            // transactions = lsTrx.ToArray();
+            // bc.AddBlock(transactions);
 
-            //Print all blocks
-            bc.PrintBlocks();
+            // //Print all blocks
+            // bc.PrintBlocks();
 
-            var height = bc.GetHeight();
-            Console.WriteLine("Blockchain Height: {0}", height);           
+            // var height = bc.GetHeight();
+            // Console.WriteLine("Blockchain Height: {0}", height);           
 
-            //check balance for each account account
-            var balance = bc.GetBalance("Genesis Account");
-            Console.WriteLine("Genesis Account balance: {0}", balance);
+            // //check balance for each account account
+            // var balance = bc.GetBalance("Genesis Account");
+            // Console.WriteLine("Genesis Account balance: {0}", balance);
 
-            balance = bc.GetBalance("Ricardo");
-            Console.WriteLine("Ricardo balance: {0}", balance);
+            // balance = bc.GetBalance("Ricardo");
+            // Console.WriteLine("Ricardo balance: {0}", balance);
 
-            balance = bc.GetBalance("Frodo");
-            Console.WriteLine("Frodo  balance: {0}", balance);
-
-
-            balance = bc.GetBalance("Madona");
-            Console.WriteLine("Madona balance: {0}", balance);
+            // balance = bc.GetBalance("Frodo");
+            // Console.WriteLine("Frodo  balance: {0}", balance);
 
 
+            // balance = bc.GetBalance("Madona");
+            // Console.WriteLine("Madona balance: {0}", balance);
 
 
-            HTTPServer test = new HTTPServer();
-            test.Start();
-            while (true) ;
+
+
+            // HTTPServer test = new HTTPServer();
+            // test.Start();
+            // while (true) ;
 
         }
 

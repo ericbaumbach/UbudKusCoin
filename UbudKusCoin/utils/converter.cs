@@ -1,11 +1,47 @@
 using System.Text;
 using Models;
 using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Utils
 {
     public static class Converter
     {
+
+        public static byte[] DoSerialize(this object obj)
+        {
+            if(obj == null){
+                return null;
+            }
+
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms, obj);
+                return ms.ToArray();
+            }
+        }
+   
+        public static object DoDeSerialize(this byte[] bytes)
+        {
+            try
+            {
+                var ms = new MemoryStream(bytes);
+                var bf = new BinaryFormatter();
+                ms.Seek(0, SeekOrigin.Begin);
+                //ms.Position = 0;
+                return bf.Deserialize(ms);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occur: {0}", ex.ToString());
+            }
+
+            return null;
+        }
+
+    
         /**
         Convert array of byte to string 
         */
