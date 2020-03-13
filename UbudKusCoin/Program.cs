@@ -47,7 +47,7 @@ namespace Main
             };
 
             var transactions = lsTrx.ToArray();
-            // bc.AddBlock(transactions);
+            bc.AddBlock(transactions);
 
             // lsTrx = new List<Transaction>
             // {
@@ -55,10 +55,10 @@ namespace Main
             // };
 
             // transactions = lsTrx.ToArray();
-            // bc.AddBlock(transactions);
+            //bc.AddBlock(transactions);
 
             // //Print all blocks
-            // bc.PrintBlocks();
+           // bc.PrintBlocks();
 
             // var height = bc.GetHeight();
             // Console.WriteLine("Blockchain Height: {0}", height);           

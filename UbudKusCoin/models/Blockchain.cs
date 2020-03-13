@@ -86,7 +86,7 @@ namespace Models
                     this.AddOrUpdateLastHash(genesisblock.Hash);
 
                     //asign lash hash with genesis block hash
-                    LastHash = genesisblock.Hash;
+                    this.LastHash = genesisblock.Hash;
 
                 }
                 else
@@ -280,25 +280,39 @@ namespace Models
         //     return balance;
         // }
 
-        // public void PrintBlocks() {
-
-        //     var sbf = new StringBuilder();
-
-        //     foreach (Block block in this.Blocks)
-        //     {
-        //         Console.WriteLine("Height:      {0}", block.Height);
-        //         Console.WriteLine("Timestamp:   {0}", block.TimeStamp.ConvertToDateTime());
-        //         Console.WriteLine("Prev. Hash:  {0}", block.PrevHash.ConvertToHexString());
-        //         Console.WriteLine("Hash:        {0}", block.Hash.ConvertToHexString());
-        //         Console.WriteLine("Transactins: {0}", block.Transactions.ConvertToString());
-        //         Console.WriteLine("Creator:     {0}", block.Creator);
-        //         Console.WriteLine("--------------\n");
-
-        //     }
-
-        //     Console.WriteLine(sbf);
+        public void PrintBlocks() {
 
 
-        // }
+            // get last added 100 objects of the collection
+            var blockchain = this.GetBlockchain();
+            var results = blockchain.FindAll();
+
+            foreach (var doc in results)
+            {
+                var variable = doc.Keys;
+                 Console.WriteLine(variable);
+                // comboBox1.Items.Add(variable);
+                // Console.WriteLine(variable);
+            }
+
+            //Console.WriteLine(results);
+            // var sbf = new StringBuilder();
+
+            // foreach (Block BsonDocument in results)
+            // {
+            //     Console.WriteLine("Height:      {0}", block.Height);
+            //     Console.WriteLine("Timestamp:   {0}", block.TimeStamp.ConvertToDateTime());
+            //     Console.WriteLine("Prev. Hash:  {0}", block.PrevHash.ConvertToHexString());
+            //     Console.WriteLine("Hash:        {0}", block.Hash.ConvertToHexString());
+            //     Console.WriteLine("Transactins: {0}", block.Transactions.ConvertToString());
+            //     Console.WriteLine("Creator:     {0}", block.Creator);
+            //     Console.WriteLine("--------------\n");
+
+            // }
+
+            // Console.WriteLine(sbf);
+
+
+        }
     }
 }
