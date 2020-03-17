@@ -12,69 +12,42 @@ namespace Main
             // Make blockchain
             var bc = new Blockchain();
            
-            //Create new transaction
-            var trx1 = new Transaction
+            Console.WriteLine("=========================");
+            Console.WriteLine("1. Get Genesis Block");
+            Console.WriteLine("2. Get Last Block");
+            Console.WriteLine("3. Add a transaction");
+            Console.WriteLine("4. Display Blockchain");
+            Console.WriteLine("5. Exit");
+            Console.WriteLine("=========================");
+
+            int selection = 0;
+            while (selection != 5)
             {
-                Sender = "Genesis Account",
-                Recipient = "Ricardo",
-                Amount = 300,
-                Fee = 0.001
-            };
+                switch (selection)
+                {
+                    case 1:
+                        Console.WriteLine("Geting Genesis Block");                       
+                        break;
+                    case 2:
+                        Console.WriteLine("Geting Last Block");
+                        break;    
 
-            //Create new transaction
-            var trx2 = new Transaction
-            {
-                Sender = "Genesis Account",
-                Recipient = "Frodo",
-                Amount = 250,
-                Fee = 0.001
-            };
+                    case 3:
+                        Console.WriteLine("Please enter the receiver name");             
+                        break;
 
-            //Create new transaction
-            var trx3 = new Transaction
-            {
-                Sender = "Ricardo",
-                Recipient = "Madona",
-                Amount = 20,
-                Fee = 0.0001
-            };
+                    case 4:
+                        Console.WriteLine("Print Blockchain");
+                        break;
+                }
 
-            //create list of transactions
-            var lsTrx = new List<Transaction>
-            {
-                trx1,
-                trx2
-            };
-
-            var transactions = lsTrx.ToArray();
-            bc.AddBlock(transactions);
-
-            lsTrx = new List<Transaction>
-            {
-                trx3         
-            };
-
-            transactions = lsTrx.ToArray();
-            bc.AddBlock(transactions);
-
-            //Print all blocks
-            bc.PrintBlocks();
-
-            //check balance for each account account
-            var balance = bc.GetBalance("Genesis Account");
-            Console.WriteLine("Genesis Account balance: {0}", balance);
-
-            balance = bc.GetBalance("Ricardo");
-            Console.WriteLine("Ricardo balance: {0}", balance);
-
-            balance = bc.GetBalance("Frodo");
-            Console.WriteLine("Frodo  balance: {0}", balance);
+                Console.WriteLine("Please select an action");
+                string action = Console.ReadLine();
+                selection = int.Parse(action);
+            }
 
 
-            balance = bc.GetBalance("Madona");
-            Console.WriteLine("Madona balance: {0}", balance);
-
-            Console.ReadKey();
+            // Console.ReadKey();
         }
 
 
