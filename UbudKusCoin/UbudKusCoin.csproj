@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
+    <PackageReference Include="Secp256k1.Net" Version="0.1.55"/>
+    <PackageReference Include="NBitcoin" Version="5.0.40"/>
   </ItemGroup>
 </Project>
